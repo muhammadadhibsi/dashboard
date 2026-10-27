@@ -12,8 +12,14 @@ import { NAV_ITEMS } from "./navItems";
 function Brand() {
   return (
     <div className="px-6">
-      <p className="text-xl leading-7 font-bold text-voca">Vocagame Test</p>
-      <p className="text-xs leading-5 tracking-wider text-muted uppercase">
+      <NavLink to="/" className="inline-block focus:outline-none">
+        <img
+          src="/vocagame-fulllogo.png"
+          alt="VocaGame"
+          className="h-10 w-auto object-contain"
+        />
+      </NavLink>
+      <p className="mt-1 text-[11px] font-semibold tracking-wider text-muted uppercase">
         Real Time Dashboard
       </p>
     </div>
