@@ -1,0 +1,155 @@
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* The app ships dark only; <html class="dark"> keeps shadcn's dark: variants active. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:
+    "JetBrains Mono Variable", ui-monospace, SFMono-Regular, monospace;
+
+  /* Sampled from design/Dashboard_Page.png, the visual source of truth. */
+  --color-bg: #131315;
+  --color-surface: #201f22;
+  /* Table header band and other recessed strips inside a surface. */
+  --color-surface-low: #1c1b1d;
+  --color-surface-2: #2a292c;
+  /* Chart tooltip body, a step above surface-2. */
+  --color-tooltip: #29292b;
+  --color-hover: #353437;
+  --color-line: #464554;
+  /* Active sidebar row. */
+  --color-nav-active: #1c1c21;
+  /* Transactions and Customers draw their cards a step darker, with a softer hairline. */
+  --color-card-low: #171719;
+  --color-line-soft: #27272a;
+  --color-line-danger: #453636;
+  /* Transactions table header and pagination band. */
+  --color-band: #1a191b;
+  /* Recessed input fill on the Transactions filter bar and the product bar track. */
+  --color-field: #0e0e10;
+
+  --color-voca: #16ca2e;
+  --color-voca-soft: rgb(22 202 46 / 0.14);
+  --color-cyan: #0aa5c2;
+  --color-violet: #8b5cf6;
+  --color-amber: #f59e0b;
+  --color-rose: #ef4444;
+  /* Solid container behind negative pills and critical activity icons. */
+  --color-danger: #93000a;
+  --color-danger-line: #a62026;
+  /* Success pill, KPI change pill and positive activity icon container. */
+  /* Translucent so the tint lands on #25322f over surface and #1c2b27 over card-low, as drawn. */
+  --color-success-soft: rgb(78 222 163 / 0.1);
+  --color-success-line: rgb(78 222 163 / 0.28);
+  /* Initial-avatar circles and the neutral pill outline. */
+  --color-lavender-soft: #403f4e;
+  --color-mint-soft: #29453c;
+  --color-orchid-soft: #463d4e;
+  --color-orchid-ink: #ddb7ff;
+  --color-pill-line: #444350;
+  /* Small uppercase tag background, e.g. the LIVE marker. */
+  --color-tag: #302f38;
+  /* KPI mini bars: muted history, stronger latest bar; brown when the trend is bad. */
+  --color-bar-good: #29453c;
+  --color-bar-good-strong: #326b56;
+  --color-bar-bad: #4d3d3d;
+  --color-bar-bad-strong: #795b59;
+
+  /* Lighter steps for small text on tinted badges; each is at least 6.2:1 on surface-2. */
+  --color-voca-ink: #4edea3;
+  --color-cyan-ink: #22d3ee;
+  --color-violet-ink: #c0c1ff;
+  --color-amber-ink: #fbbf24;
+  --color-rose-ink: #ffb4ab;
+
+  --color-fg: #e5e1e4;
+  --color-muted: #c7c4d7;
+  /* Labels, timestamps and axis ticks. */
+  --color-subtle: #918fa0;
+
+  /*
+   * shadcn/ui semantic tokens, mapped onto the palette above so ui/ primitives
+   * and hand-written components share one surface system. --color-muted is
+   * deliberately not remapped: in this project it is the secondary text tone.
+   */
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-fg);
+  --color-card: var(--color-surface);
+  --color-card-foreground: var(--color-fg);
+  --color-popover: var(--color-surface);
+  --color-popover-foreground: var(--color-fg);
+  --color-primary: var(--color-voca);
+  --color-primary-foreground: var(--color-bg);
+  --color-secondary: var(--color-surface-2);
+  --color-secondary-foreground: var(--color-fg);
+  --color-accent: var(--color-hover);
+  --color-accent-foreground: var(--color-fg);
+  --color-muted-foreground: var(--color-muted);
+  --color-destructive: var(--color-rose);
+  --color-border: var(--color-line);
+  --color-input: var(--color-line);
+  --color-ring: var(--color-voca);
+
+  --shadow-glow: 0 0 24px rgb(22 202 46 / 0.25);
+  --shadow-glow-inset: inset 0 0 20px rgb(22 202 46 / 0.08);
+  --shadow-pop: 0 16px 40px rgb(0 0 0 / 0.65);
+
+  --animate-drawer-in: drawer-in 200ms ease-out;
+  --animate-fade-in: fade-in 150ms ease-out;
+
+  @keyframes drawer-in {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  /* Tailwind v4 borders default to currentColor; shadcn primitives expect the theme hairline. */
+  *,
+  ::before,
+  ::after {
+    border-color: var(--color-border);
+  }
+
+  body {
+    @apply bg-bg font-sans text-fg antialiased;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-voca;
+  }
+
+  ::selection {
+    @apply bg-voca/30;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
