@@ -6,6 +6,7 @@ A high-fidelity real-time administrative dashboard for VocaGame, featuring compr
 
 ## Live Demo & Repository
 
+- **Live Demo:** https://vocagame.adhinugroho.tech/
 - **Repository:** https://github.com/vourdev/vocagame-dashboard.git
 - **Figma Parity:** Designed to pixel-precision against official Figma references for Dashboard, Transactions, and Customers views.
 
