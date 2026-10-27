@@ -45,7 +45,7 @@ export function ChangePill({
   return (
     <Badge
       className={cn(
-        "h-4.75 shrink-0 gap-1 rounded-sm border-0 pr-2.25 pl-2 text-[11px] font-semibold tabular-nums",
+        "h-4.75 shrink-0 gap-1 rounded-sm border-0 pr-2 pl-1.5 sm:pr-2.25 sm:pl-2 text-[10.5px] sm:text-[11px] font-semibold tabular-nums",
         neutral
           ? "bg-surface-2 text-muted"
           : good
@@ -54,7 +54,7 @@ export function ChangePill({
         className,
       )}
     >
-      <Icon aria-hidden className="size-3" />
+      <Icon aria-hidden className="size-3 shrink-0" />
       <span className="sr-only">{up ? "Up" : "Down"}</span>
       {up ? "+" : ""}
       {formatChange(change)}
@@ -170,8 +170,8 @@ export function MetricCard({
 
       <header
         className={cn(
-          "flex items-start justify-between gap-3",
-          segment ? "h-3" : "h-4",
+          "flex items-center justify-between gap-2 sm:gap-3",
+          segment ? "min-h-3" : "min-h-4.5",
         )}
       >
         <h3

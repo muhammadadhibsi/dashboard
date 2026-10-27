@@ -30,7 +30,7 @@ function KpiRow() {
     return (
       <LoadingRegion
         label="Loading key metrics"
-        className="grid gap-4.5 grid-cols-2 lg:grid-cols-4"
+        className="grid gap-3.5 sm:gap-4.5 grid-cols-1 sm:grid-cols-2 xl:grid-cols-4"
       >
         {Array.from({ length: 4 }, (_, i) => (
           <MetricCardSkeleton key={i} />
@@ -53,7 +53,7 @@ function KpiRow() {
   }
 
   return (
-    <div className="grid gap-4.5 grid-cols-2 lg:grid-cols-4">
+    <div className="grid gap-3.5 sm:gap-4.5 grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
       <MetricCard
         label="Total Revenue"
         {...data.total_revenue}

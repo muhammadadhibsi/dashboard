@@ -109,7 +109,7 @@ export function RevenueChart() {
       <div
         role="group"
         aria-label="Date range"
-        className="flex rounded-md border border-line bg-surface-low p-1"
+        className="flex rounded-md border border-line bg-surface-low p-0.5"
       >
         {RANGES.map((value) => (
           <Button
@@ -120,7 +120,7 @@ export function RevenueChart() {
             onClick={() => setRange(value)}
             className={cn(
               // Dark text on the green segment: the reference's white label fails AA (2.4:1).
-              "h-6 rounded-sm px-5 text-xs font-medium pointer-coarse:h-11",
+              "h-6.5 rounded-xs px-3 text-[11px] font-medium transition-colors sm:h-7 sm:px-3.5 sm:text-xs",
               range === value
                 ? "bg-voca text-bg hover:bg-voca hover:text-bg"
                 : "text-muted hover:bg-hover hover:text-fg",
@@ -130,10 +130,9 @@ export function RevenueChart() {
           </Button>
         ))}
       </div>
-      <div className="flex min-h-11 items-center gap-3">
+      <div className="flex items-center gap-2">
         <Switch
           id={switchId}
-          size="lg"
           checked={compare}
           onCheckedChange={setCompare}
         />
